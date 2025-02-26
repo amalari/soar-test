@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import './App.css'
 import { DashboardPage } from './modules/analytics/components/DashboardPage';
 import { Layout } from './modules/layout/components/Layout'
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";

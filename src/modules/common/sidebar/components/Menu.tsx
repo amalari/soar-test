@@ -1,7 +1,6 @@
 import React, { forwardRef, useMemo } from "react";
-import clsx from "clsx";
-import { twMerge } from "tailwind-merge";
 import { LevelContext, MenuContext, MenuContextProps } from "./MenuContext";
+import { cn } from "../../utils/cn";
 
 export interface MenuItemStylesParams {
   level: number;
@@ -44,7 +43,7 @@ export const Menu = forwardRef<HTMLMenuElement, MenuProps>(
         <LevelContext.Provider value={0}>
           <nav
             ref={ref}
-            className={twMerge(clsx("flex flex-col space-y-2", className))}
+            className={cn("flex flex-col space-y-2", className)}
             {...rest}
           >
             <ul className="list-none p-0">{children}</ul>

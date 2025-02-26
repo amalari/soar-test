@@ -1,22 +1,10 @@
 import React, { FC } from "react";
 import clsx from "clsx";
-import { useMediaQuery } from "../hooks/useMediaQuery";
 import { sidebarClasses } from "../utils/sidebarClasses";
 import { SidebarBackdrop } from "./SidebarBackdrop";
-import { twMerge } from "tailwind-merge";
-
-type BreakPoint = "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | "always" | "all";
-
-const BREAK_POINTS = {
-  xs: "480px",
-  sm: "576px",
-  md: "768px",
-  lg: "992px",
-  xl: "1200px",
-  xxl: "1600px",
-  always: "always",
-  all: "all",
-};
+import { BREAK_POINTS, BreakPoint } from "../../utils/breakPoint";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { cn } from "../../utils/cn";
 
 export interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   collapsed?: boolean;
@@ -38,10 +26,10 @@ const SidebarImage: FC<{ src: string; alt?: string; className?: string }> = ({ s
     <img
       src={src}
       alt={alt || "sidebar background"}
-      className={twMerge(clsx(
+      className={cn(
         "w-full h-full object-cover object-center absolute left-0 top-0 z-20",
         className
-      ))}
+      )}
     />
   );
 };
@@ -92,7 +80,8 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>(
           transition: `width, left, ${transitionDuration}ms`,
         }}
         className={clsx(
-          `relative border-r border-[#E6EFF5] transition-all`,
+          'border-r transition-all',
+          !broken && 'relative',
           broken && `fixed h-full top-0 z-100 ${toggled ? "left-0" : `left-[-${width}]`}`,
           collapsed && "w-[var(--collapsedWidth)] min-w-[var(--collapsedWidth)]",
           className

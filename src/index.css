@@ -1,5 +1,27 @@
 @import "tailwindcss";
 
-@theme {
+
+:root {
+  --primary: #232323;
+  --primary-light: #718EBF;
+  --border: #DFEAF2;
+  --background: #F5F7FA;
+  /* --default-font-family: "inter"; */
+}
+
+@theme inline {
   --font-display: "Inter", "sans-serif";
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-background: var(--background);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    @apply text-primary;
+  }
 }

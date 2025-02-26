@@ -1,7 +1,8 @@
 import Sidebar from "../../common/sidebar"
 import { IconCreditCard, IconHome, IconInvestment, IconLoan, IconLogo, IconPrivilege, IconService, IconSetting, IconTransaction, IconUser } from "../../common/icons"
 import { Link, useMatch } from 'react-router-dom';
-import { FC } from "react";
+import { forwardRef, useCallback, useImperativeHandle, useState } from "react";
+import clsx from "clsx";
 
 interface MenuItem {
   icon: React.ReactNode
@@ -61,12 +62,37 @@ const UserSidebarMenuItem: React.FC<MenuItem> = ({ icon, label, link }) => {
     >{label}</Sidebar.MenuItem>
   )
 }
-interface UserSidebarProps {
-  toggled?: boolean
+interface UserSidebarRef {
+  show: () => void
+  close: () => void
 }
-export const UserSidebar: FC<UserSidebarProps> = ({ toggled }) => {
+export const UserSidebar = forwardRef<UserSidebarRef, unknown>((_, ref) => {
+  const [hidden, setHidden] = useState(false)
+  const [broken, setBroken] = useState(false)
+
+  const handleBreakPoint = useCallback((val: boolean) => {
+    if(!broken && val) setHidden(true)
+    if(!val) setHidden(false)
+    setBroken(val)
+  }, [broken])
+  const handleBackdropClick = useCallback(() => setHidden(true), [])
+
+  useImperativeHandle(ref, () => ({
+    show: () => setHidden(false),
+    close: () => setHidden(true)
+  }), [])
+
   return (
-    <Sidebar className="user-sidebar" toggled={toggled} breakPoint="xs">
+    <Sidebar 
+      className={clsx(
+        "user-sidebar",
+        hidden && "hidden"
+      )} 
+      toggled
+      breakPoint="xs"
+      onBackdropClick={handleBackdropClick}
+      onBreakPoint={handleBreakPoint}
+    >
       <div className="flex px-9 gap-4 h-24 items-center">
         <IconLogo className="h-7" />
         <h4 className="font-bold text-2xl text-blue-[#343C6A]">Soar Task</h4>
@@ -78,4 +104,4 @@ export const UserSidebar: FC<UserSidebarProps> = ({ toggled }) => {
       </Sidebar.Menu>
     </Sidebar>
   )
-}
+})
