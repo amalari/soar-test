@@ -5,8 +5,8 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-background text-primary-light hover:bg-background/90",
-        primary: "bg-primary text-white hover:bg-primary/90",
+        default: "cursor-pointer bg-background text-primary-light hover:bg-background/70",
+        primary: "cursor-pointer bg-primary text-white hover:bg-primary/70",
       },
     },
     defaultVariants: {

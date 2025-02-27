@@ -14,23 +14,25 @@ export const Input = React.forwardRef<HTMLInputElement | DatePicker, InputProps>
       return (
         <DatePicker
           ref={ref as Ref<DatePicker>}
+          className="min-h-[50px]"
           {...props}
         />
       )
     }
     return (
-      <input
-        type={type}
-        className={cn(
-          "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-          icon && "pl-11",
-          className
-        )}
-        ref={ref as Ref<HTMLInputElement>}
-        {...props}
-      >
-        {icon && <span className="absolute left-3 top-1/2 -translate-y-1/2">{icon}</span>}
-      </input>
+      <div className="soar-input relative">
+        <input
+          type={type}
+          className={cn(
+            "rounded-full min-h-12 w-full border border-input bg-transparent px-5 py-1 text-base transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+            icon && "pl-13",
+            className
+          )}
+          ref={ref as Ref<HTMLInputElement>}
+          {...props}
+        />
+        {icon && <div className="absolute min-h-12 flex items-center left-5 top-0">{icon}</div>}
+      </div>
     )
   }
 )

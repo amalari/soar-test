@@ -89,7 +89,7 @@ export const UserSidebar = forwardRef<UserSidebarRef, unknown>((_, ref) => {
         hidden && "hidden"
       )} 
       toggled
-      breakPoint="xs"
+      breakPoint="md"
       onBackdropClick={handleBackdropClick}
       onBreakPoint={handleBreakPoint}
     >

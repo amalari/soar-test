@@ -9,5 +9,5 @@ export const HeaderTitle: FC<HeaderTitleProps> = ({
   title,
   className = ""
 }) => {
-  return <h1 className={cn("text-2xl md:text-3xl font-semibold text-primary", className)}>{title}</h1>
+  return <h1 className={cn("text-2xl lg:text-3xl font-semibold text-primary", className)}>{title}</h1>
 }
