@@ -1,0 +1,10 @@
+.soar-input .react-datepicker-wrapper {
+  @apply w-full border;
+  border-radius: 16px;
+  border-color: var(--border);
+  color: var(--primary-light);
+}
+.soar-input .react-datepicker-wrapper .input:active {
+  border-radius: 16px !important;
+  border-color: var(--border);
+}

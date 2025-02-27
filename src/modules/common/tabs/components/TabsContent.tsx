@@ -16,7 +16,7 @@ export const TabsContent = ({ children, value, className, ...props }: TabsConten
   }
 
   return (
-    <div className={cn("flex-1 px-4 outline-none", className)} {...props}>
+    <div className={cn("flex-1", className)} {...props}>
       {children}
     </div>
   );
