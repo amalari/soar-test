@@ -8,8 +8,8 @@ import { menuButtonStyles } from './MenuButtonStyles';
 import { MenuIcon } from './MenuIcon';
 import { MenuPrefix } from './MenuPrefix';
 import { MenuSuffix } from './MenuSuffix';
-import { twMerge } from 'tailwind-merge';
 import { IconSidebarActive } from '../../icons';
+import { cn } from '../../utils/cn';
 
 export interface MenuItemProps extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "prefix"> {
   icon?: React.ReactNode;
@@ -45,7 +45,7 @@ export const MenuItemFR: React.ForwardRefRenderFunction<HTMLLIElement, MenuItemP
 
   return (
     <li
-      className={twMerge(clsx(className, "w-full relative"))}
+      className={cn(className, "w-full relative")}
       ref={ref}
     >
       <div
