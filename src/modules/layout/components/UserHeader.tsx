@@ -27,35 +27,40 @@ export const UserHeader: FC<UserHeaderProps> = ({
     <Header title={linkToTitleMap[location.pathname] || "Dashboard"}
       leftMenu={[
         (
-          <>
-            <Button 
-              className="lg:hidden bg-transparent"
-              onClick={onSidebarShow}
-            >
-              <IconMenu />
-            </Button>
-          </>
+          <Button 
+            className="lg:hidden bg-transparent"
+            onClick={onSidebarShow}
+          >
+            <IconMenu />
+          </Button>
         )
       ]}
       rightMenu={[
-        <UserAvatarImg />,
-        (<Button className="h-12 w-12 rounded-full">
+        <UserAvatarImg key="avatar" />, 
+        (
+          <Button key="notification" className="h-12 w-12 rounded-full">
             <IconNotificationActive className="!h-6 !w-6 text-[#396AFF]" />
-          </Button>),
-        (<Button className="h-12 w-12 rounded-full">
+          </Button>
+        ),
+        (
+          <Button key="setting" className="h-12 w-12 rounded-full">
             <IconSettingOutline className="!h-6 !w-6" />
-          </Button>),
-        !isMobile && (<Input
-          placeholder="Search for something"
-          className="bg-background border-0"
-          icon={<IconSearch className="text-foreground" />}
-        />)
+          </Button>
+        ),
+        !isMobile && (
+          <Input
+            key="search"
+            placeholder="Search for something"
+            className="bg-background rounded-full border-0"
+            icon={<IconSearch className="text-foreground" />}
+          />
+        ),
       ]}
     >
       {isMobile && (
         <Input
           placeholder="Search for something"
-          className="bg-background border-0"
+          className="bg-background rounded-full border-0"
           icon={<IconSearch className="text-foreground" />}
         />
       )}

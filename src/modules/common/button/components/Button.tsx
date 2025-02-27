@@ -11,6 +11,7 @@ export const Button: FC<ButtonProps> = ({ className, variant, ...props }) => {
   return (
     <button
       className={cn(
+        "px-4 py-3",
         buttonVariants({ variant, className })
       )}
       {...props}
