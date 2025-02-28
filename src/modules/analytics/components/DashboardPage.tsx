@@ -1,3 +1,11 @@
+import { MyBalanceCards } from "../../balance/components/MyBalanceCards";
+
 export const DashboardPage = () => {
-  return <h1 className="text-xl font-bold">Dashboard</h1>;
+  return (
+    <div className="soar-dashboard-page mx-10 my-7">
+      <div className="flex">
+        <MyBalanceCards />
+      </div>
+    </div>
+  );
 };
