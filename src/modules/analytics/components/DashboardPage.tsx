@@ -1,3 +1,4 @@
+import { BalanceHistoryChart } from "../../balance/components/BalanceHistoryChart";
 import { MyBalanceCards } from "../../balance/components/MyBalanceCards";
 import { ExpenseChart } from "../../transaction/components/ExpenseChart";
 import { RecentTransactions } from "../../transaction/components/RecentTransactions";
@@ -10,9 +11,13 @@ export const DashboardPage = () => {
         <MyBalanceCards className="col-span-3 xl:col-span-2" />
         <RecentTransactions className="col-span-3 xl:col-span-1" />
       </div>
-      <div className="grid grid-cols-3 gap-7">
-        <WeeklyActivityChart className="col-span-3 xl:col-span-2 h-[320px]" />
-        <ExpenseChart className="col-span-3 xl:col-span-1 h-[320px]" />
+      <div className="grid grid-cols-3 gap-7 mb-4">
+        <WeeklyActivityChart className="col-span-3 xl:col-span-2" />
+        <ExpenseChart className="col-span-3 xl:col-span-1" />
+      </div>
+      <div className="grid grid-cols-5 gap-7">
+        <div className="col-span-5 md:col-span-2"></div>
+        <BalanceHistoryChart className="col-span-5 xl:col-span-3" />
       </div>
     </div>
   );
