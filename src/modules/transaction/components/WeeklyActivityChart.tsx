@@ -74,7 +74,7 @@ export const WeeklyActivityChart: FC<WeeklyActivityChartProps> = ({
       className
     )}>
       <h3 className="text-xl font-medium mb-3">Weekly Activity</h3>
-      <div className="bg-white rounded-2xl p-6 h-[320px] flex justify-center">
+      <div className="bg-white rounded-2xl p-6 flex justify-center h-[320px]">
         <Bar data={data} options={options} />
       </div>
     </div>

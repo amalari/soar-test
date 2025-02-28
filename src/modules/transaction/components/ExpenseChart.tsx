@@ -49,8 +49,8 @@ export const ExpenseChart: FC<ExpenseChartProps> = ({
       className
     )}>
       <h3 className="text-xl font-medium mb-3">Expense Statistics</h3>
-      <div className="bg-white rounded-2xl p-6 h-[320px]">
-        <Pie  data={data} options={options} />
+      <div className="bg-white rounded-2xl p-6 h-[320px] flex justify-center">
+        <Pie data={data} options={options} />
       </div>
     </div>
   )

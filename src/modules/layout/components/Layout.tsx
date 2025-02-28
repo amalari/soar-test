@@ -16,7 +16,7 @@ export const Layout: FC<LayoutProps> = () => {
         ref={userSidebarRef}
       />
       
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col lg:pl-[250px]">
         <UserHeader onSidebarShow={() => userSidebarRef.current?.show()} />
         <Outlet />
       </div>
