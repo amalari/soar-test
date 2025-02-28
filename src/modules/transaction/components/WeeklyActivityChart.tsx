@@ -1,16 +1,6 @@
 import { Bar } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-  Tooltip,
-  Legend,
-} from "chart.js";
 import { ComponentProps, FC } from "react";
 import { cn } from "../../common/utils/cn";
-
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const data: ComponentProps<typeof Bar>["data"] = {
   labels: ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"],
@@ -56,6 +46,9 @@ const options: ComponentProps<typeof Bar>["options"] = {
       titleColor: "#000",
       bodyColor: "#000",
     },
+    datalabels: {
+      display: false,
+    }
   },
   scales: {
     x: {
@@ -80,9 +73,9 @@ export const WeeklyActivityChart: FC<WeeklyActivityChartProps> = ({
       "soar-weekly-activity-chart",
       className
     )}>
-      <h3 className="text-xl font-medium mb-3">Weeklu Activity</h3>
-      <div className="bg-white rounded-2xl p-6">
-        <Bar width={660} height={220} data={data} options={options} />
+      <h3 className="text-xl font-medium mb-3">Weekly Activity</h3>
+      <div className="bg-white rounded-2xl p-6 h-[320px] flex justify-center">
+        <Bar data={data} options={options} />
       </div>
     </div>
   );
