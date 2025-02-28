@@ -28,7 +28,7 @@ export const UserHeader: FC<UserHeaderProps> = ({
       leftMenu={[
         (
           <Button 
-            className="lg:hidden bg-transparent"
+            className="lg:hidden bg-transparent p-0"
             onClick={onSidebarShow}
           >
             <IconMenu />

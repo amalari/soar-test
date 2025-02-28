@@ -19,8 +19,8 @@ export const Header: FC<HeaderProps> = ({
   const isMobile = useMediaQuery(`(max-width: calc(${BREAK_POINTS.md} - 1px))`)
 
   return (
-    <header className="soar-header bg-white min-h-24 border-b px-6 py-4 lg:px-10 flex flex-col gap-5">
-      <div className="flex justify-between">
+    <header className="soar-header bg-white border-b px-6 py-4 lg:px-10 flex flex-col gap-5">
+      <div className="flex justify-between items-center">
         <div className="soar-header-menu-left flex gap-4 items-center">
           {!isMobile && (
             <>

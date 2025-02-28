@@ -80,9 +80,8 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>(
           transition: `width, left, ${transitionDuration}ms`,
         }}
         className={clsx(
-          'border-r transition-all',
-          !broken && 'relative',
-          broken && `fixed h-full top-0 z-100 ${toggled ? "left-0" : `left-[-${width}]`}`,
+          'border-r transition-all fixed h-screen',
+          broken && `h-full top-0 z-100 ${toggled ? "left-0" : `left-[-${width}]`}`,
           collapsed && "w-[var(--collapsedWidth)] min-w-[var(--collapsedWidth)]",
           className
         )}
