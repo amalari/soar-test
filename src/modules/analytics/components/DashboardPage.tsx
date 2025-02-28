@@ -1,4 +1,5 @@
 import { MyBalanceCards } from "../../balance/components/MyBalanceCards";
+import { ExpenseChart } from "../../transaction/components/ExpenseChart";
 import { RecentTransactions } from "../../transaction/components/RecentTransactions";
 import { WeeklyActivityChart } from "../../transaction/components/WeeklyActivityChart";
 
@@ -11,6 +12,7 @@ export const DashboardPage = () => {
       </div>
       <div className="grid grid-cols-3 gap-7">
         <WeeklyActivityChart className="col-span-3 xl:col-span-2 h-[320px]" />
+        <ExpenseChart className="col-span-3 xl:col-span-1 h-[320px]" />
       </div>
     </div>
   );
