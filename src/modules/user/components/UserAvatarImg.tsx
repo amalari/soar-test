@@ -1,14 +1,16 @@
-import { FC } from "react"
+import { ComponentProps, FC } from "react"
 import { cn } from "../../common/utils/cn"
 
-type UserAvatarImgProps = {
+type UserAvatarImgProps = ComponentProps<'img'> & {
   className?: string
 }
 
 export const UserAvatarImg: FC<UserAvatarImgProps> = ({
-  className = ''
+  className = '',
+  src = '/user-avatar.png',
+  ...props
 }) => {
   return (
-    <img src="/user-avatar.png" alt="User Avatar" className={cn("w-16 h-16 rounded-full", className)} />
+    <img className={cn("w-16 h-16 rounded-full", className)} src={src} {...props} />
   )
 }
