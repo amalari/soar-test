@@ -36,7 +36,7 @@ export const BalanceCard: FC<BalanceCardProps> = ({ balance, cardHolder, validTh
         <div className="flex justify-between items-start mb-8">
           <div>
             <p className={cn(
-              "text-xs md:text-sm font-light",
+              "text-xs md:text-sm font-extralight",
               dark ? "text-white" : "text-primary-light"
             )}>Balance</p>
             <p className="text-base md:text-xl">{balanceFormatted}</p>
@@ -48,14 +48,14 @@ export const BalanceCard: FC<BalanceCardProps> = ({ balance, cardHolder, validTh
         <div className="flex gap-14 mb-4">
           <div>
             <p className={cn(
-              "text-xs md:text-sm font-light",
+              "text-xs md:text-sm font-extralight",
               dark ? "text-white" : "text-primary-light"
             )}>CARD HOLDER</p>
             <p className="text-sm md:text-base">{cardHolder}</p>
           </div>
           <div>
             <p className={cn(
-              "text-xs md:text-sm font-light",
+              "text-xs md:text-sm font-extralight",
               dark ? "text-white" : "text-primary-light"
             )}>VALID THRU</p>
             <p className="text-sm md:text-base">{validThru}</p>
@@ -64,7 +64,7 @@ export const BalanceCard: FC<BalanceCardProps> = ({ balance, cardHolder, validTh
       </div>
       {!dark && <hr />}
       <div className="flex justify-between px-6 py-4 bg-gradient-to-b from-[#ffffff26] to-[transparent]">
-        <p className="text-xl">{cardNumberMasked}</p>
+        <p className="text-lg md:text-xl">{cardNumberMasked}</p>
         {!dark && <IconBrandMastercardDark />}
         {dark && <IconBrandMastercard />}
       </div>
