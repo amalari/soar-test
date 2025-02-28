@@ -7,7 +7,7 @@ const data: ComponentProps<typeof Pie>["data"] = {
   labels: ["Entertainment", "Bill Expense", "Others", "Investment"],
   datasets: [
     {
-      data: [30, 15, 20, 35], // Persentase masing-masing kategori
+      data: [30, 15, 20, 35],
       backgroundColor: ["#2C2F55", "#F28C28", "#111111", "#3D7EFF"],
       borderWidth: 6,
       borderColor: "#fff",
@@ -19,10 +19,10 @@ const options: ComponentProps<typeof Pie>["options"] = {
   rotation: -50,
   plugins: {
     legend: {
-      display: false, // Menyembunyikan legend default
+      display: false,
     },
     datalabels: {
-      color: "#fff", // Warna teks di dalam Pie Chart
+      color: "#fff",
       font: {
         size: 12,
       },
