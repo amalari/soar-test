@@ -12,8 +12,8 @@ export const UserProfileEdit: FC<UserProfileEditProps> = ({
 }) => {
   return (
     <div className={cn("soar-user-profile-edit", className)}>
-      <UserForm className="py-10 pl-8" />
-      <Button variant="primary" className="flex justify-self-end rounded-xl px-16">Save</Button>
+      <UserForm className="px-2 py-3 md:py-10 md:pl-8" />
+      <Button variant="primary" className="flex justify-self-end w-full md:w-auto rounded-xl px-16">Save</Button>
     </div>
   )
 }
