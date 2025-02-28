@@ -17,7 +17,7 @@ export const QuickTransfer: FC<QuickTransferProps> = ({
       "soar-quick-transfer",
       className
     )}>
-      <h3 className="text-xl font-medium mb-3">Expense Statistics</h3>
+      <h3 className="text-xl font-medium mb-3">Quick Transfer</h3>
       <div className="bg-white p-6 rounded-2xl">
         <TargetTransferUser className="mb-4" value={selectedUserId} onChangeValue={setSelectedUserId} />
         <div className="flex items-center gap-4">
