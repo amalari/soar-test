@@ -14,3 +14,6 @@ export {default as IconNotificationActive} from './assets/notification-active.sv
 export {default as IconSearch} from './assets/search.svg?react'
 export {default as IconSettingOutline} from './assets/setting-outline.svg?react'
 export {default as IconPencil} from './assets/pencil.svg?react'
+export {default as IconBrandMastercardDark} from './assets/brand-mastercard-dark.svg?react'
+export {default as IconBrandMastercard} from './assets/brand-mastercard.svg?react'
+export {default as IconChipCard} from './assets/chip-card.svg?react'
