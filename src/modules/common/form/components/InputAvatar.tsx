@@ -56,7 +56,7 @@ export const InputAvatar: FC<InputAvatarProps> = ({
   }, [croppedAreaPixels, handleClose, imgSrc, onChangeValue])
 
   return (
-    <div className={cn("soar-input-avatar relative", className)}>
+    <div className={cn("soar-input-avatar relative w-20 h-20", className)}>
       <Input 
         type="file" 
         accept="image/*" 
