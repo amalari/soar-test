@@ -1,5 +1,5 @@
 import { Bar } from "react-chartjs-2";
-import { ComponentProps, FC } from "react";
+import { ComponentProps, FC, useEffect, useRef, useState } from "react";
 import { cn } from "../../common/utils/cn";
 
 const data: ComponentProps<typeof Bar>["data"] = {
@@ -68,14 +68,29 @@ type WeeklyActivityChartProps = React.ComponentProps<"div">;
 export const WeeklyActivityChart: FC<WeeklyActivityChartProps> = ({
   className = "",
 }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const observer = new ResizeObserver(() => {
+      if (containerRef.current) {
+        setWidth(containerRef.current.offsetWidth);
+      }
+    });
+
+    if (containerRef.current) observer.observe(containerRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className={cn(
+    <div ref={containerRef} className={cn(
       "soar-weekly-activity-chart",
       className
     )}>
       <h3 className="text-xl font-medium mb-3">Weekly Activity</h3>
-      <div className="bg-white rounded-2xl p-6 flex justify-center h-[320px]">
-        <Bar data={data} options={options} />
+      <div className="bg-white rounded-2xl p-6 flex justify-center items-center h-[320px]">
+        {width > 0 && <Bar width={width} height={226} data={data} options={options} />}
       </div>
     </div>
   );
