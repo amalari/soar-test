@@ -48,7 +48,7 @@ export const RecentTransactionItem: FC<RecentTransactionItemProps> = ({
         </div>
         <div>
           <p className="text-primary font-medium">{iconAndColorMapped.label}</p>
-          <p className="text-primary-light">{dayjs(transactionDate).format('d MMM YYYY')}</p>
+          <p className="text-primary-light font-light">{dayjs(transactionDate).format('D MMM YYYY')}</p>
         </div>
       </div>
       <p

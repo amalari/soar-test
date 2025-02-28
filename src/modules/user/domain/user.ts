@@ -10,4 +10,6 @@ export interface User {
   city: string
   postalCode: string
   country: string
+  position?: string
+  profilePicture?: string
 }
