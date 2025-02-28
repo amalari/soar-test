@@ -10,5 +10,6 @@ export interface UserResponse {
   city: string
   postalCode: string
   country: string
+  position?: string
   profilePicture?: string
 }

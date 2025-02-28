@@ -1,0 +1,1 @@
+export const transactionDbSchema = '++id, transferName, transactionDate, amount, type';

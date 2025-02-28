@@ -1,30 +1,41 @@
-import { ComponentProps, FC, useState } from "react";
+import { ComponentProps, FC, useEffect, useState } from "react";
 import { Button } from "../../common/button/components/Button";
 import { IconChevronRight } from "../../common/icons";
 import { cn } from "../../common/utils/cn";
+import { useUsers } from "../../user/hooks/useUsers";
+import { useMe } from "../../user/hooks/useMe";
 
 type TargetUserProps = ComponentProps<"div"> & {
   value?: number
   onChangeValue?: (value: number) => void
 }
-
+type TargetTransferUserItem = {
+  id: number, 
+  fullname: string, 
+  position?: string, 
+  profilePicture?: string
+}
 export const TargetTransferUser: FC<TargetUserProps> = ({
   value,
   onChangeValue,
   className = ''
 }) => {
-  const [users, setUsers] = useState([
-    { id: 1, name: "Livia Bator", role: "CEO", image: "/target-user-1.jpg" },
-    { id: 2, name: "Randy Press", role: "Director", image: "/target-user-2.jpg" },
-    { id: 3, name: "Workman", role: "Designer", image: "/target-user-3.jpg" },
-    { id: 4, name: "Workman", role: "Designer", image: "/target-user-3.jpg" },
-  ])
+  const { data: me } = useMe()
+  const { data: users, isFetched } = useUsers()
+  const [targetUsers, setTargetUsers] = useState<TargetTransferUserItem[]>([])
+  useEffect(() => {
+    if(!isFetched) return
+    const newUsers = users!.filter(({ id }) => id !== me!.id).map(
+      ({ id, fullname, position, profilePicture }) => ({ id, fullname, position, profilePicture })
+    )
+    setTargetUsers(newUsers)
+  }, [isFetched, me, users])
   
   const scrollRight = () => {
-    const newUsers = [...users]
-    const item = newUsers.splice(0, 1)[0]; // Hapus elemen dari posisi awal
+    const newUsers = [...targetUsers!]
+    const item = newUsers.splice(0, 1)[0];
     newUsers.push(item)
-    setUsers(newUsers)
+    setTargetUsers(newUsers)
   };
 
   return (
@@ -33,23 +44,23 @@ export const TargetTransferUser: FC<TargetUserProps> = ({
       className
     )}>
       <div className="flex gap-7">
-        {users.map((user, index) => {
+        {targetUsers.map(({ fullname, profilePicture, position, id }, index) => {
           if(index >= 3){
             return null
           }
           return (
-            <div onClick={() => onChangeValue?.(user.id)} key={index} role="button" className={cn(
+            <div onClick={() => onChangeValue?.(id)} key={index} role="button" className={cn(
               "w-[100px] flex flex-col items-center cursor-pointer hover:font-semibold",
-              value && value >= user.id && "font-semibold"
+              value && value >= id && "font-semibold"
             )}>
-              <img src={user.image} alt={user.name} className="w-16 h-16 rounded-full mb-2" />
-              <p className="text-sm">{user.name}</p>
-              <p className="text-xs text-primary-light">{user.role}</p>
+              <img src={profilePicture} alt="profile image" className="w-16 h-16 rounded-full mb-2" />
+              <p className="text-sm">{fullname}</p>
+              <p className="text-xs text-primary-light">{position}</p>
             </div>
           )
         })}
       </div>
-      {users.length > 3 && (
+      {targetUsers.length > 3 && (
         <div className="flex items-center">
           <Button
             onClick={scrollRight}
