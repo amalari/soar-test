@@ -83,7 +83,7 @@ Please find the project and issue tracker links below for your review.
 * [Issue Tracker Link](https://github.com/amalari/soar-test/issues)
 
 
-**Vercel Live Demo Link** [Demo](https://achmad-soar-test.vercel.app/dashboard)
+**Vercel Live Demo Link** [Demo](https://achmad-soar-test-as1ibd3gu-achmad-jamaludins-projects.vercel.app/dashboard)
 
 
 **Future Improvements**
