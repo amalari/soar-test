@@ -3,6 +3,7 @@ import { cn } from "../../common/utils/cn";
 import { UserForm } from "./UserForm";
 import { Button } from "../../common/button/components/Button";
 import { useMe } from "../hooks/useMe";
+import { useUpdateUser } from "../hooks/useUpdateUser";
 
 type UserProfileEditProps = {
   className?: string;
@@ -13,6 +14,7 @@ export const UserProfileEdit: FC<UserProfileEditProps> = ({
 }) => {
   const formRef = useRef<ComponentRef<typeof UserForm>>(null)
   const { data: me, isFetched } = useMe()
+  const { mutateAsync: updateUser } = useUpdateUser()
   const defaultForm = useMemo(() => {
     if(!me) return undefined 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -21,8 +23,11 @@ export const UserProfileEdit: FC<UserProfileEditProps> = ({
   }, [me])
 
   const handleSubmit: NonNullable<ComponentProps<typeof UserForm>['onSubmit']> = useCallback(async (data) => {
-    console.log({ data })
-  }, [])
+    await updateUser({
+      ...data,
+      birthDate: data.birthDate.toISOString(),
+    })
+  }, [updateUser])
     
   return (
     <div className={cn("soar-user-profile-edit", className)}>

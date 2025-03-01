@@ -35,8 +35,8 @@ export const QuickTransfer: FC<QuickTransferProps> = ({
         <div className="flex items-center gap-4">
           <label htmlFor="amount" className="block text-primary-light text-sm font-light w-26">Write Amount</label>
           <div className="flex">
-            <Input value={String(formData.amount)} onChangeValue={(val) => setFormData(prev => ({ ...prev, amount: Number(val)}))} name="amount" type="number" className="bg-background rounded-full" max={myBalance?.balance} />
-            <Button disabled={!selectedUserId} onClick={() => handleTransfer(formData.amount)} variant="primary" className="rounded-full -ml-7 z-10">
+            <Input value={String(formData.amount)} onChangeValue={(val) => setFormData(prev => ({ ...prev, amount: Number(val)}))} name="amount" type="number" className="bg-background rounded-full pr-14" max={myBalance?.balance} />
+            <Button disabled={!selectedUserId} onClick={() => handleTransfer(formData.amount)} variant="primary" className="rounded-full -ml-12 z-10">
               <span className="text-sm font-normal">Send</span>
               <IconSend className="!w-5 !h-5" />
             </Button>

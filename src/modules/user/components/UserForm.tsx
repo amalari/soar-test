@@ -11,7 +11,7 @@ interface UserFormRef {
   submit: () => void;
 }
 interface UserFormProps {
-  onSubmit?: (data: UserFormSchema & { profilePicture: File | string | undefined }) => void;
+  onSubmit?: (data: UserFormSchema & { profilePicture: string | undefined }) => void;
   defaultValues?: UserFormSchema;
   className?: string;
 }
@@ -28,7 +28,7 @@ export const UserForm = forwardRef<UserFormRef, UserFormProps>(({
       password: undefined
     },
   });
-  const [profilePicture, setProfilePicture] = useState<File | string>()
+  const [profilePicture, setProfilePicture] = useState<string>()
   
   const handleSubmit = useCallback((data: UserFormSchema) => {
     onSubmit?.({ ...data, profilePicture })

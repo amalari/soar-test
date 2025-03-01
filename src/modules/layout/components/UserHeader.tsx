@@ -7,6 +7,7 @@ import { UserAvatarImg } from "../../user/components/UserAvatarImg"
 import { useMediaQuery } from "../../common/hooks/useMediaQuery"
 import { BREAK_POINTS } from "../../common/utils/breakPoint"
 import { useLocation } from "react-router-dom"
+import { useMe } from "../../user/hooks/useMe"
 
 type UserHeaderProps = {
   onSidebarShow: () => void
@@ -22,6 +23,7 @@ export const UserHeader: FC<UserHeaderProps> = ({
 }) => {
   const location = useLocation();
   const isMobile = useMediaQuery(`(max-width: calc(${BREAK_POINTS.md} - 1px))`)
+  const { data: me } = useMe()
 
   return (
     <Header title={linkToTitleMap[location.pathname] || "Dashboard"}
@@ -36,7 +38,7 @@ export const UserHeader: FC<UserHeaderProps> = ({
         )
       ]}
       rightMenu={[
-        <UserAvatarImg key="avatar" />, 
+        <UserAvatarImg key="avatar" src={me?.profilePicture} />, 
         (
           <Button key="notification" className="h-12 w-12 rounded-full">
             <IconNotificationActive className="!h-6 !w-6 text-[#396AFF]" />
