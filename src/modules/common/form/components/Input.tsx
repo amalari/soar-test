@@ -7,12 +7,13 @@ import "./inputStyle.css"
 
 type InputProps = Omit<DatePickerProps, 'onChange'> & React.ComponentProps<"input"> & {
   icon?: React.ReactNode
+  errorMessage?: string
   onDateChange?: DatePickerProps["onChange"]
   onChangeValue?: (value: string) => void
 }
 
 export const Input = React.forwardRef<HTMLInputElement | DatePicker, InputProps>(
-  ({ className, type, icon, onChange, onChangeValue, onDateChange, ...props }, ref) => {
+  ({ className, type, icon, errorMessage, onChange, onChangeValue, onDateChange, ...props }, ref) => {
     const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
       onChange?.(e)
       onChangeValue?.(e.target.value)
@@ -27,9 +28,14 @@ export const Input = React.forwardRef<HTMLInputElement | DatePicker, InputProps>
         <div className="soar-input">
           <DatePicker
             ref={ref as Ref<DatePicker>}
-            className={cn("min-h-[50px] px-4 text-base w-full", className)}
+            className={cn(
+              "min-h-[50px] px-4 text-base w-full", 
+              errorMessage && "border-red-500",
+              className
+            )}
             {...datepickerProps}
           />
+          {errorMessage && <p className="text-sm text-red-500">{errorMessage}</p>}
         </div>
       )
     }
@@ -40,6 +46,7 @@ export const Input = React.forwardRef<HTMLInputElement | DatePicker, InputProps>
           className={cn(
             "rounded-2xl min-h-12 w-full border border-input bg-transparent px-5 py-1 text-base transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
             icon && "pl-13",
+            errorMessage && "border-red-500",
             className
           )}
           ref={ref as Ref<HTMLInputElement>}
@@ -47,6 +54,7 @@ export const Input = React.forwardRef<HTMLInputElement | DatePicker, InputProps>
           {...props}
         />
         {icon && <div className="absolute min-h-12 flex items-center left-5 top-0">{icon}</div>}
+        {errorMessage && <p className="text-sm text-red-500">{errorMessage}</p>}
       </div>
     )
   }
