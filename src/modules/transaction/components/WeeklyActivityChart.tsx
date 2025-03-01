@@ -11,7 +11,14 @@ const data: ComponentProps<typeof Bar>["data"] = {
       backgroundColor: "#000000",
       borderRadius: 30,
       borderSkipped: false,
-      barThickness: 15,
+      borderWidth: {
+        bottom: 0,
+        top: 0,
+        left: 5,
+        right: 5,
+      },
+      borderColor: "#fff",
+      barThickness: 25,
     },
     {
       label: "Deposit",
@@ -19,7 +26,14 @@ const data: ComponentProps<typeof Bar>["data"] = {
       backgroundColor: "#396AFF",
       borderRadius: 30,
       borderSkipped: false,
-      barThickness: 15,
+      barThickness: 25,
+      borderWidth: {
+        bottom: 0,
+        top: 0,
+        left: 5,
+        right: 5,
+      },
+      borderColor: "#fff",
     },
   ],
 };
@@ -51,11 +65,6 @@ const options: ComponentProps<typeof Bar>["options"] = {
     }
   },
   scales: {
-    x: {
-      ticks: {
-        padding: 10,
-      }
-    },
     y: {
       ticks: {
         stepSize: 100,
@@ -90,7 +99,7 @@ export const WeeklyActivityChart: FC<WeeklyActivityChartProps> = ({
     )}>
       <h3 className="text-xl font-medium mb-3">Weekly Activity</h3>
       <div className="bg-white rounded-2xl p-6 flex justify-center items-center h-[320px]">
-        {width > 0 && <Bar width={width} height={226} data={data} options={options} />}
+        {width > 0 && <Bar width={width} height={300} data={data} options={options} />}
       </div>
     </div>
   );
