@@ -11,7 +11,7 @@ import { getCroppedImg } from "../../utils/cropImage";
 interface InputAvatarProps {
   className?: string;
   value?: File | string
-  onChangeValue?: (value: File | string) => void
+  onChangeValue?: (value: string) => void
 }
 
 export const InputAvatar: FC<InputAvatarProps> = ({
