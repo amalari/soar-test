@@ -38,8 +38,8 @@ VITE_RUN_SEEDER=true # set to false to disable seeder (default true, so applicat
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [repository-link]
-    cd [project-directory]
+    git clone https://github.com/amalari/soar-test.git soar-test-achmad
+    cd soar-test-achmad
     ```
 2.  **Install Dependencies:**
     ```bash
