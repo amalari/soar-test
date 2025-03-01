@@ -12,7 +12,7 @@ export const MyBalanceCards: FC<MyBalanceCardsProps> = ({
 }) => {
   const { data: balanceCards } = useMyBalanceCards()
   const { data: balance } = useMyBalance()
-  console.log({ balanceCards, balance })
+
   if(!balanceCards || !balance) return null
   return (
     <div className={cn("soar-my-balance-cards", className)}>
