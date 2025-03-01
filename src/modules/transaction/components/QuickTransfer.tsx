@@ -1,9 +1,12 @@
 import { ComponentProps, FC, useState } from "react"
+
 import { TargetTransferUser } from "./TargetTransferUser"
 import { cn } from "../../common/utils/cn"
 import { Input } from "../../common/form/components/Input"
 import { Button } from "../../common/button/components/Button"
 import { IconSend } from "../../common/icons"
+import { useMyBalance } from "../../balance/hooks/useMyBalance"
+import { useTransfer } from "../hooks/useTransfer"
 
 type QuickTransferProps = ComponentProps<"div">
 
@@ -11,6 +14,15 @@ export const QuickTransfer: FC<QuickTransferProps> = ({
   className = ""
 }) => {
   const [selectedUserId, setSelectedUserId] = useState<number>()
+  const [formData, setFormData] = useState<{ amount: number }>({ amount: 0 })
+  const { data: myBalance } = useMyBalance()
+  const { mutateAsync: transfer } = useTransfer()
+
+  const handleTransfer = async (amount: number) => {
+    if(!selectedUserId) return
+    await transfer({ amount, targetUserId: selectedUserId })
+    setFormData({ amount: 0 })
+  }
 
   return (
     <div className={cn(
@@ -23,8 +35,8 @@ export const QuickTransfer: FC<QuickTransferProps> = ({
         <div className="flex items-center gap-4">
           <label htmlFor="amount" className="block text-primary-light text-sm font-light w-26">Write Amount</label>
           <div className="flex">
-            <Input name="amount" type="number" className="bg-background rounded-full" />
-            <Button variant="primary" className="rounded-full -ml-7 z-10">
+            <Input value={String(formData.amount)} onChangeValue={(val) => setFormData(prev => ({ ...prev, amount: Number(val)}))} name="amount" type="number" className="bg-background rounded-full" max={myBalance?.balance} />
+            <Button disabled={!selectedUserId} onClick={() => handleTransfer(formData.amount)} variant="primary" className="rounded-full -ml-7 z-10">
               <span className="text-sm font-normal">Send</span>
               <IconSend className="!w-5 !h-5" />
             </Button>

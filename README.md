@@ -29,6 +29,10 @@ This project is a React application built with Vite, designed to display user ba
     * **Why:** Simplifies form management, reduces boilerplate code, and integrates seamlessly with Valibot for validation.
 * **Git:** Version control system for maintaining the project's codebase.
 
+**Environment Variables**
+```bash
+VITE_RUN_SEEDER=true # set to false to disable seeder (default true, so application would reset indexdb every reload apps)
+```
 
 **Setup Instructions**
 

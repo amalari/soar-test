@@ -50,11 +50,11 @@ export const TargetTransferUser: FC<TargetUserProps> = ({
           }
           return (
             <div onClick={() => onChangeValue?.(id)} key={index} role="button" className={cn(
-              "w-[100px] flex flex-col items-center cursor-pointer hover:font-semibold",
-              value && value >= id && "font-semibold"
+              "w-[80px] flex flex-col items-center cursor-pointer hover:font-semibold",
+              value && value === id && "font-semibold"
             )}>
               <img src={profilePicture} alt="profile image" className="w-16 h-16 rounded-full mb-2" />
-              <p className="text-sm">{fullname}</p>
+              <p className="text-sm truncate">{fullname}</p>
               <p className="text-xs text-primary-light">{position}</p>
             </div>
           )
